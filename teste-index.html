@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rolar p/ div certa</title>
+
+    <style>
+      .scroll {
+        height: 1000px;
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p id="dest">Click on the button below to scroll to the top of the page.</p>
+    <a href="#down"> Scroll to bottom </a>
+    <h1 style="color: green">GeeksforGeeks</h1>
+
+    <b>
+      How to set smooth scrolling after clicking an anchor link using
+      JavaScript?
+    </b>
+
+    <p class="scroll">
+      GeeksforGeeks is a computer science portal. This is a large scrollable
+      area.
+    </p>
+
+    <a href="#dest"> Scroll to top </a>
+
+    <p id="down">Chegou em baixo!!</p>
+
+    <script>
+      let anchorSelector = 'a[href^="#"]';
+
+      let anchorList = document.querySelectorAll(anchorSelector);
+
+      anchorList.forEach((link) => {
+        link.onclick = function (e) {
+          e.preventDefault();
+
+          let destination = document.querySelector(this.hash);
+
+          destination.scrollIntoView({
+            behavior: 'smooth',
+          });
+        };
+      });
+
+      /* Outras propriedades como deixar no centro por exemplo..
+
+        behavior: "smooth" | "auto";
+        block: "start" | "center" | "end" | "nearest";
+        inline: "start" | "center" | "end" | "nearest";
+        */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        header {
+            width: 100%;
+            height: 150px;
+            display: block;
+        }
+        
+        .div-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 1000px;
+            background-color: aqua;
+        }
+        
+        .conteudo-simples {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 300px;
+            background-color: rgb(14, 223, 25);
+        }
+        
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 200px;
+            background-color: rgb(35, 14, 223);
+        }
+        
+        footer a {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="div-container">
+            <h1 id="up">teste rolagem scroll</h1>
+            <a href="#thanks">Descer para o rodapé</a>
+        </div>
+    </header>
+    <section>
+        <h2>Corpo site</h2>
+    </section>
+    <div class="conteudo-simples">
+        <h3>Conteúdo simples</h3>
+    </div>
+    <footer>
+        <h4 id="thanks">Obrigado!</h4>
+        <a href="#up">Subir para a header</a>
+    </footer>
+    <script>
+        $('a.page-scroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body')
+                .stop()
+                .animate({
+                        scrollTop: $($anchor.attr('href')).offset().top - 50,
+                    },
+                    1250,
+                    'easeInOutExpo'
+                );
+            event.preventDefault();
+        });
+
+        // *************
+        // let anchorSelector = 'a[href^="#"]';
+
+        // let anchorList = document.querySelectorAll(anchorSelector);
+
+        // anchorList.forEach((link) => {
+        //     link.onclick = function(e) {
+
+        //         e.preventDefault();
+
+        //         let destination = document.querySelector(this.hash);
+
+        //         destination.scrollIntoView({
+        //             behavior: 'smooth',
+        //         });
+        //     };
+        // });
+    </script>
+</body>
+
+</html>
